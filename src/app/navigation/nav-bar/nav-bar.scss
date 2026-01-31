@@ -1,0 +1,56 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 8%;
+  background: #fdfdfb; // Off-white italiano
+  border-bottom: 3px solid;
+  border-image: linear-gradient(to right, #008c45 33%, #f4f5f0 33%, #f4f5f0 66%, #cd212a 66%) 1;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
+  .brand {
+    font-family: 'Playfair Display', serif; // Recomendo importar no index.html
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+
+    .green { color: #008c45; }
+    .white { color: #2d2d2d; margin-left: 4px; }
+    .red { color: #cd212a; }
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: 0.3s;
+
+      &:hover, &.active { color: #008c45; }
+    }
+
+    .cta-button {
+      background: #cd212a;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background: #a51b22;
+        box-shadow: 0 4px 12px rgba(205, 33, 42, 0.2);
+      }
+    }
+  }
+}
