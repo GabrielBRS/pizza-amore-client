@@ -1,0 +1,34 @@
+# Orquestrador de deploy — Pizza Amore (React/Vite) no RKE2/Rancher.
+# Painel: https://rancher.orzyon.ai/dashboard/c/local/explorer/apps.deployment
+
+[remote]
+# Este é o acesso SSH ao nó RKE2, não o DNS público nem a URL do Rancher.
+host    = "fda2:67cd:dd48:1100::100"
+user    = "gabrielsousa"
+port    = 22
+identity = "~/.ssh/id_ed25519"
+workdir = "/tmp/iac-pizza-amore"
+
+[k8s]
+namespace       = "pizzaamore"
+deployment      = "pizzaamore"
+container       = "pizzaamore-web"
+# Host principal usado na verificação pós-deploy e todos os hosts publicados.
+ingress_host    = "pizzaamore.com.br"
+ingress_hosts   = ["pizzaamore.com.br", "www.pizzaamore.com.br"]
+rollout_timeout = 180
+verify_paths    = ["/", "/healthz"]
+verify_tries    = 3
+verify_contains = "Pizza Amore"
+
+[build]
+mode       = "artifact"
+command    = ["npm", "run", "build"]
+dist       = "dist"
+dockerfile = "deploy/Dockerfile.runtime"
+nginx_conf = "deploy/nginx.conf"
+
+[image]
+repository    = "local/pizza-amore-frontend"
+keep          = 5
+containerd_ns = "k8s.io"

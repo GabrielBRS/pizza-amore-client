@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pizza-amore-react",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "/home/gabrielsousa/workspace/pizza_amore/pizza-amore-client", "run", "dev", "--", "--port", "5173", "--strictPort"],
+      "port": 5173
+    }
+  ]
+}
